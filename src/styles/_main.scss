@@ -1,0 +1,26 @@
+@import "variables";
+
+.navBar{
+  background-color: $header-color;
+
+  ul{
+    list-style-type: none;
+    margin :5px;
+    padding:50px 5px;
+    overflow: hidden;
+  }
+
+
+  li a {
+    display:block;
+    padding:8px;
+  }
+}
+
+.leftMenu{
+  float:left;
+}
+
+.rightMenu{
+  float:right;
+}

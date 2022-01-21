@@ -1,25 +1,26 @@
+
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NavBar from './components/Navbar';
+import ProductComponent from './components/Product';
+import { Product } from './models/products.interface';
+import "./App.scss"
+
+const product ={
+  id:1,
+title:"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+price:109.95,
+description:"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+category:"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+rating:
+{rate:3.9,count:120}
+} as Product
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <NavBar/>
+  <ProductComponent product={product}/>
+   </>
   );
 }
 
