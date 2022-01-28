@@ -1,18 +1,19 @@
 import React from 'react'
-import { Product } from '../models/products.interface'
+import { Product } from '../models/product.interface'
 
-export interface ProductsProp{
+interface ProductsProp{
   product:Product
 }
 const ProductComponent=(props:ProductsProp)=>{
 return(
 <>
-<ul>
-  <li>PRODUCT</li>
-  <li>{props.product.id}</li>
-  <li>{props.product.description}</li>
-  <li>{props.product.price}</li>
-</ul>
+<div className="product-card">
+  <img src={props.product.image}></img>
+  <h1>{props.product.title}</h1>
+  <p className="price">{props.product.price}</p>
+  <p>{props.product.description}</p>
+  <p><button>Add to Cart</button></p>
+</div>
 </>)
 }
 
