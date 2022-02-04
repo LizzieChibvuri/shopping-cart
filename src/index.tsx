@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createStore } from 'redux';
 import App from './App';
 import AboutComponent from './components/About';
 import CartComponent from './components/Cart';
@@ -12,6 +11,7 @@ import Products from './components/Products';
 import { Product } from './models/product.interface';
 
 import reportWebVitals from './reportWebVitals';
+import { getAllProducts } from './services/products-service';
 import { store } from './store';
 
 
@@ -25,13 +25,15 @@ const product ={
   {rate:3.9,count:120}
   } as Product
   
+const productsList=getAllProducts()
+
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+   
     <BrowserRouter>
     <Routes>
       <Route path="/" element={ <App/>}>
-        <Route path="/products" element={ <Products/>}/>
+        <Route path="/products" element={ <Products products={productsList}/>}/>
         <Route path="/product" element={ <ProductComponent product={product}/>}/>
         <Route path="/cart" element={ <CartComponent/>}/>
         <Route path="/contact" element={ <ContactComponent/>}/>
@@ -39,7 +41,7 @@ ReactDOM.render(
      </Route>
     </Routes>
     </BrowserRouter>
-    </Provider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -8,7 +8,7 @@ const ProductComponent=(props:ProductsProp)=>{
 return(
 <>
 <div className="product-card">
-  <img src={props.product.image}></img>
+  <img src={props.product.image} alt="not found"></img>
   <h1>{props.product.title}</h1>
   <p className="price">{props.product.price}</p>
   <p>{props.product.description}</p>
