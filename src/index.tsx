@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createStore } from 'redux';
 import App from './App';
 import AboutComponent from './components/About';
 import CartComponent from './components/Cart';
@@ -10,6 +12,8 @@ import Products from './components/Products';
 import { Product } from './models/product.interface';
 
 import reportWebVitals from './reportWebVitals';
+import { store } from './store';
+
 
 const product ={
   id:1,
@@ -23,6 +27,7 @@ const product ={
   
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={ <App/>}>
@@ -34,6 +39,7 @@ ReactDOM.render(
      </Route>
     </Routes>
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
