@@ -1,10 +1,32 @@
+
+.products-container{
+  display:flex;
+  flex-wrap:wrap;
+
+}
+
 .product-card{
- box-shadow:darksalmon;
- width:20%;
- height: 20%;
-  // margin:inherit;
-  // padding:50px;
+  flex:1 0 21%;
+  padding: 20px;
+  box-shadow:darksalmon;
+  max-width:30%;
+  margin:auto;
   text-align: center;
   font-family: arial;
   align-content: center;
-}
+ 
+  img{
+    margin:2%;
+    max-width: 70%;
+    max-height: 70%;
+  }
+ 
+  button{
+   opacity: 0.7;
+  }
+ 
+ }
+ 
+ .price{
+   color:darkgreen
+ }

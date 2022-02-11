@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
-import productsListReducer from "./product.reducer";
+import productsListReducer, { ProductListState } from "./product.reducer";
+
+interface RootState{
+productsState:ProductListState
+}
 
 const rootReducer=combineReducers({
   productsState:productsListReducer,

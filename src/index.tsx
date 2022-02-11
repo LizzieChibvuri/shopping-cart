@@ -29,7 +29,7 @@ const productsList=getAllProducts()
 
 ReactDOM.render(
   <React.StrictMode>
-   
+   <Provider store={store}>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={ <App/>}>
@@ -41,7 +41,7 @@ ReactDOM.render(
      </Route>
     </Routes>
     </BrowserRouter>
-
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
