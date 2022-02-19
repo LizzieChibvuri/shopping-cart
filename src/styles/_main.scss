@@ -1,27 +1,27 @@
-@import "variables";
-@import "product";
+@import 'modal';
+@import 'product';
+@import 'variables';
 
-.navBar{
+.navBar {
   background-color: $header-color;
 
-  ul{
+  ul {
     list-style-type: none;
-    margin :5px;
-    padding:50px 5px;
+    margin: 5px;
+    padding: 50px 5px;
     overflow: hidden;
   }
 
-
   li a {
-    display:block;
-    padding:8px;
+    display: block;
+    padding: 8px;
   }
 }
 
-.leftMenu{
-  float:left;
+.leftMenu {
+  float: left;
 }
 
-.rightMenu{
-  float:right;
+.rightMenu {
+  float: right;
 }
