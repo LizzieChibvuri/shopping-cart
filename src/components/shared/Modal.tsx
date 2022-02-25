@@ -22,6 +22,11 @@ const Modal = (props: ModalProps) => {
             <p className="price">{props.product.price}</p>
             <p>{props.product.description}</p>
             <p>
+              <span>
+                <button>-</button>
+                <button>0</button>
+                <button>+</button>
+              </span>
               <button>Add to Cart</button>
             </p>
           </div>
