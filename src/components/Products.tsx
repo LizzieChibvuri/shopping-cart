@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { Product } from '../models/product.interface'
 import {
+  addProductToCart,
   closeProductPageModal,
   initiateGetAllProducts,
   showProductPageModal,
 } from '../store/actions'
-import Modal from './shared/Modal'
+import Modal from './ProductView'
 
 interface Props {
   category?: string[]
@@ -26,6 +27,7 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = {
   closeModal: closeProductPageModal,
   showModal: showProductPageModal,
+  addProduct: addProductToCart,
   getProducts: initiateGetAllProducts as () => void,
 }
 
@@ -53,11 +55,15 @@ const ProductsComponent = (props: ProductsProps) => {
                 <img
                   onClick={() => props.showModal(product)}
                   src={product.image}></img>
-                <h3>{product.title}</h3>
+                <h4>{product.title}</h4>
                 <p className="price">{product.price}</p>
-                <p>{product.description}</p>
                 <p>
-                  <button>Add to Cart</button>
+                  <button
+                    onClick={() => {
+                      props.addProduct(product)
+                    }}>
+                    Add to Cart
+                  </button>
                 </p>
               </div>
             ))}

@@ -3,6 +3,7 @@ import * as ProductActions from '../actions'
 
 export interface ProductListState {
   products: Product[]
+  productsForSelectedCategory: Product[]
   productsLoaded: boolean
   showModal: boolean
   error: string
@@ -12,6 +13,7 @@ export interface ProductListState {
 export const InitialState: ProductListState = {
   products: [],
   productsLoaded: false,
+  productsForSelectedCategory: [],
   showModal: false,
   error: '',
   selectedProductToView: {} as Product,
@@ -36,6 +38,14 @@ export default function productsListReducer(state = InitialState, action: any) {
         ...state,
         productsLoaded: false,
         error: action.payload,
+      }
+
+    case ProductActions.GET_PRODUCTS_BY_CATEGORY:
+      return {
+        ...state,
+        productsForSelectedCategory: state.products.filter(
+          (x) => x.category === action.payload,
+        ),
       }
 
     case ProductActions.CLOSE_PRODUCT_INFO_MODAL:
