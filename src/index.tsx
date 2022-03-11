@@ -18,6 +18,22 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="/products" element={<Products />} />
+            <Route
+              path="/products/category/jewelery"
+              element={<Products category="jewelery" />}
+            />
+            <Route
+              path="/products/category/electronics"
+              element={<Products category="electronics" />}
+            />{' '}
+            <Route
+              path="/products/category/men"
+              element={<Products category="men's clothing" />}
+            />{' '}
+            <Route
+              path="/products/category/women"
+              element={<Products category="women's clothing" />}
+            />
             <Route path="/cart" element={<CartComponent />} />
             <Route path="/contact" element={<ContactComponent />} />
             <Route path="/about" element={<AboutComponent />} />

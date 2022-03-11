@@ -11,7 +11,7 @@ import {
 import Modal from './ProductView'
 
 interface Props {
-  category?: string[]
+  category?: string
 }
 
 const mapStateToProps = (state: any) => ({
@@ -28,7 +28,7 @@ const mapDispatchToProps = {
   closeModal: closeProductPageModal,
   showModal: showProductPageModal,
   addProduct: addProductToCart,
-  getProducts: initiateGetAllProducts as () => void,
+  getProducts: initiateGetAllProducts as (category?: string) => void,
 }
 
 type ProductsProps = typeof mapDispatchToProps &
@@ -38,7 +38,9 @@ type ProductsProps = typeof mapDispatchToProps &
 const ProductsComponent = (props: ProductsProps) => {
   useEffect(() => {
     async function getProductsList() {
-      await props.getProducts()
+      props.category === undefined
+        ? await props.getProducts()
+        : await props.getProducts(props.category)
     }
 
     getProductsList()
@@ -46,7 +48,7 @@ const ProductsComponent = (props: ProductsProps) => {
 
   return (
     <>
-      <h1>PRODUCTS LIST </h1>
+      <h1 className="heading">PRODUCTS LIST </h1>
       {props.productsLoaded ? (
         <div className="products-container">
           {props.productList &&

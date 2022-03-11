@@ -30,7 +30,12 @@ export default function productsListReducer(state = InitialState, action: any) {
       return {
         ...state,
         productsLoaded: true,
-        products: action.payload,
+        products:
+          action.payload.category !== undefined
+            ? action.payload.data.filter(
+                (x: Product) => x.category === action.payload.category,
+              )
+            : action.payload.data,
       }
 
     case ProductActions.GET_ALL_PRODUCTS_FAILURE:

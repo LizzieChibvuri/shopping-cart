@@ -26,10 +26,16 @@ const NavBar = () => {
           <Link to="/products">All Products</Link>
         </li>
         <li className="leftMenu">
-          <Link to="/products">Category 1</Link>
+          <Link to="/products/category/men">Men</Link>
         </li>
         <li className="leftMenu">
-          <Link to="/products">Category 2</Link>
+          <Link to="/products/category/women">Women</Link>
+        </li>
+        <li className="leftMenu">
+          <Link to="/products/category/jewelery">Jewelery</Link>
+        </li>
+        <li className="leftMenu">
+          <Link to="/products/category/electronics">Electronics</Link>
         </li>
       </ul>
     </div>

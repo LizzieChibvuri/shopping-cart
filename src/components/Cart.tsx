@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+
 import { Cart } from '../models/cart.interface'
 import {
   addProductToCart,
@@ -9,6 +10,7 @@ import {
   increaseQuantity,
   removeProductFromCart,
 } from '../store/actions'
+import { formatPrice, getCartTotal } from './utils'
 
 const mapStateToProps = (state: any) => ({
   cartItems: state.cartState.cartItems as Cart[],
@@ -32,9 +34,14 @@ const CartComponent = (props: CartProps) => {
     <>
       <div className="cart-container">
         <span>
-          {' '}
-          <h1>YOUR SHOPPING BASKET </h1>{' '}
+          <h1>YOUR SHOPPING BASKET </h1>
+          <div className="cart-total">
+            Basket Total:R
+            {formatPrice(getCartTotal(props.cartItems))}
+          </div>
+          <button>CheckOut</button>
           <button
+            className="button-danger content-right"
             onClick={() => {
               props.emptyCart()
             }}>
@@ -45,7 +52,7 @@ const CartComponent = (props: CartProps) => {
           <thead>
             <tr>
               <th>Product</th>
-              <th>Price</th>
+              <th>Unit Price</th>
               <th>Quantity</th>
               <th>Line Total</th>
             </tr>
@@ -56,11 +63,14 @@ const CartComponent = (props: CartProps) => {
               props.cartItems.map((item) => (
                 <tr key={item.product.id}>
                   <td>
-                    <img src={item.product.image}></img>
-                    <p>{item.product.title}</p>
-                    <div>
-                      {' '}
+                    <img
+                      className="content-left"
+                      src={item.product.image}></img>
+
+                    <div className="">
+                      <p>{item.product.title}</p>
                       <button
+                        className="button-danger"
                         onClick={() => {
                           props.removeProduct(item.product.id)
                         }}>
@@ -69,8 +79,9 @@ const CartComponent = (props: CartProps) => {
                     </div>
                   </td>
                   <td>{item.product.price}</td>
-                  <td className="row">
+                  <td>
                     <button
+                      className="row"
                       onClick={() => {
                         item.quantity > 1 &&
                           props.decrementQuantity(item.product.id)
@@ -78,16 +89,17 @@ const CartComponent = (props: CartProps) => {
                       -
                     </button>
 
-                    <div>{item.quantity}</div>
+                    <div className="row item-quantity">{item.quantity}</div>
 
                     <button
+                      className="row"
                       onClick={() => {
                         props.incrementQuantity(item.product.id)
                       }}>
                       +
                     </button>
                   </td>
-                  <td>{item.product.price * item.quantity}</td>
+                  <td>R{formatPrice(item.product.price * item.quantity)}</td>
                 </tr>
               ))}
           </tbody>
